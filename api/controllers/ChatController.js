@@ -65,7 +65,8 @@ module.exports = {
       success: true,
       message: param,
       count: this.rooms[index].count,
-      ip: this.ip
+      ip: this.ip,
+      socket: req.socket
     });
   }
   
