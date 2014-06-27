@@ -15,7 +15,7 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
-module.exports = {
+var ChatController = {
     
   
 
@@ -27,47 +27,64 @@ module.exports = {
 
   ipRooms: [],
   rooms: [],
-  
+  ip: null,
+
   index: function (req, res) {
-  	if(!this.ipRooms) {
-  		this.ipRooms = [];
-  	}
+  	ChatController.ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+  	index = ChatController.ipRooms.indexOf(ChatController.ip);
 
-  	if(!this.rooms) {
-  		this.rooms = [];
-  	}
-
-  	this.ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress,
-  	index = this.ipRooms.indexOf(ip);
-  	
   	if(index == -1) {
-  		this.ipRooms.push(ip);
-  		this.rooms.push({ip: ip, count: 1});
-  	} else {
-  		this.rooms[index].count++;
-  	}
-  	console.log(this.rooms);
-    res.view({});
+      ChatController._createRoom(req);
+  	} else if(!req.session.user) {
+      ChatController._addMember(index, req);
+    }
+
+  	console.log(ChatController.rooms);
+    res.view();
   },
 
-  room: function () {
+  _addMember: function (roomIndex, req) {
+    ChatController.rooms[roomIndex].members.push(ChatController._getNewMember(req));
+  },
+
+  _getNewMember: function (req) {
+    var user = {id: Math.random(), name: 'Guest'};
+    req.session.user = user;
+
+    return user;
+  },
+
+  _createRoom: function (req) {
+    ChatController.ipRooms.push(ChatController.ip);
+    ChatController.rooms.push({
+      ip: ChatController.ip,
+      members: [(ChatController._getNewMember(req))]
+    });
+  },
+
+  _destroyRoom: function (id) {
 
   },
 
   socket: function (req, res) {
-  	var index = this.ipRooms.indexOf(this.ip);
-
-  	// Get the value of a parameter
+    var index = ChatController.ipRooms.indexOf(ChatController.ip);
+    
+    // Get the value of a parameter
     var param = req.param('message');
 
-    // Send a JSON response
-    res.json({
+    var data = {
       success: true,
-      message: param,
-      count: this.rooms[index].count,
-      ip: this.ip,
-      socket: req.socket
-    });
+      param: param,
+      members: ChatController.rooms[index].members,
+      ip: ChatController.ip
+    }
+
+    console.log(data);
+
+    // Send a JSON response
+    res.json(data);
   }
   
 };
+
+module.exports = ChatController;

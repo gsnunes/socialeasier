@@ -74,6 +74,21 @@ window.onload = function () {
   socket.get("/chat/socket", {
       message: 'hi there!'
     }, 
-    function (res) { console.log(res); document.getElementById("count").innerHTML = res.count + ' Usuários online no ip: ' + res.ip;}
+    function (res) { 
+      var lis = [],
+      len = res.members.length,
+      i;
+
+      var count = document.getElementById("count")
+      count.innerHTML = len + ' Usuários online no ip: ' + res.ip;
+      var ul = document.createElement('ul');
+      
+      for(i=0; i<len; i++) {
+        lis.push('<li>' + res.members[i].name + '</li>');
+      }
+
+      ul.innerHTML = lis.join('');
+      count.appendChild(ul);
+    }
   );
 }
