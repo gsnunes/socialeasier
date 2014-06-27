@@ -69,3 +69,11 @@
   window.io
 
 );
+
+window.onload = function () {
+  socket.get("/chat/socket", {
+      message: 'hi there!'
+    }, 
+    function (res) { document.getElementById("count").innerHTML = res.count + ' Usuários online no ip: ' + res.ip;}
+  );
+}
