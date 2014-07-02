@@ -133,6 +133,7 @@ module.exports = function (grunt) {
   grunt.loadTasks(depsPath + '/grunt-contrib-cssmin/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
+  grunt.loadNpmTasks('grunt-wiredep');
 
   // Project configuration.
   grunt.initConfig({
@@ -175,10 +176,31 @@ module.exports = function (grunt) {
         //     interpolate: /\{\{(.+?)\}\}/g
         //   }
         // },
-
         files: {
           '.tmp/public/jst.js': templateFilesToInject
         }
+      }
+    },
+
+    wiredep: {
+
+      target: {
+
+        // Point to the files that should be updated when
+        // you run `grunt wiredep`
+        src: [
+          'views/**/*.ejs'
+        ],
+
+        // Optional:
+        // ---------
+        cwd: '',
+        dependencies: true,
+        devDependencies: false,
+        exclude: [],
+        fileTypes: {},
+        ignorePath: 'assets/',
+        overrides: {}
       }
     },
 
@@ -414,6 +436,7 @@ module.exports = function (grunt) {
 
   // When Sails is lifted:
   grunt.registerTask('default', [
+    'wiredep',
     'compileAssets',
     'linkAssets',
     'watch'

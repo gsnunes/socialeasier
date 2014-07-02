@@ -1,0 +1,22 @@
+{
+  "name": "social-chat",
+  "version": "0.0.0",
+  "homepage": "https://github.com/gsnunes/socialeasier",
+  "authors": [
+    "Raphael <raphasilvac@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "angular": "~1.2.19",
+    "angular-route": "~1.2.19"
+  }
+}
