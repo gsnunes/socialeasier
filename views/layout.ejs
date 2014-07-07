@@ -6,12 +6,15 @@
         your `sails.config.appName` to show that you can inject data into layouts
         exactly the same way as with your other view templates.
     -->
-    <title><%- title %></title>
+    <title>Socialeasier</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- bower:css -->
+    <link href="http://fonts.googleapis.com/css?family=Courgette" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
     <!-- endbower -->
     <!--
 
@@ -37,7 +40,7 @@
 
   </head>
 
-  <body>
+  <body style="padding-top: 70px; padding-bottom: 30px;">
 
     <!-- Include the view file for the current controller/route -->
     <%- body %>

@@ -1,0 +1,25 @@
+.btn-primary {background-color: #B71F37; border-color: #B71F37;}
+.btn-primary:hover {background-color: #B71F37; border-color: #B71F37;}
+.txt-shadow {text-shadow: #CCCCCC 1px 1px;}
+.dropdown-menu > li > a {padding: 3px 10px;}
+.bottom-chat {position: absolute; bottom: 0px; padding-bottom: 10px; width: 100%; background-color: #FFFFFF;}
+
+.conversation {overflow-y: auto; height: 200px;}
+.conversation img {float: left;}
+.conversation .info-block {display: block; padding-left: 60px;}
+.conversation .info-block h4 {color: #B71F37;}
+.conversation li {padding: 10px 0px; border-bottom: dotted 1px #CCCCCC;}
+
+@media (min-width: 768px) {
+	.bottom-chat {left: 50%; margin-left: -375px; width: 750px;}
+}
+
+@media (min-width: 992px) {
+	.bottom-chat {left: 50%; margin-left: -485px; width: 970px;}
+	.conversation { height: auto;}
+}
+
+@media (min-width: 1200px) {
+	.bottom-chat {left: 50%; margin-left: -585px; width: 1170px;}
+	.conversation { height: auto;}
+}
