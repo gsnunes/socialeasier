@@ -40,7 +40,7 @@
 
   </head>
 
-  <body style="padding-top: 70px; padding-bottom: 30px;">
+  <body style="padding-top: 70px; padding-bottom: 30px;" ng-app="siteApp">
 
     <!-- Include the view file for the current controller/route -->
     <%- body %>
@@ -57,11 +57,11 @@
       Here's an example of importing a few dependencies, in order:
     -->
     <!-- Bring in the socket.io client -->
-    <script type="text/javascript" src="/js/socket.io.js"></script>
+    <!-- <script type="text/javascript" src="/js/socket.io.js"></script> -->
     <!-- then beef it up with some convenience logic for talking to Sails.js -->
-    <script type="text/javascript" src="/js/sails.io.js"></script>
+    <!-- <script type="text/javascript" src="/js/sails.io.js"></script> -->
     <!-- listen on socket.io for incoming messages -->
-    <script type="text/javascript" src="/js/app.js"></script>
+    <!-- <script type="text/javascript" src="/js/app.js"></script> -->
 
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -69,7 +69,10 @@
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
-    <script>
+    <script src="../bower_components/angular-translate/angular-translate.js"></script>
+    <script type="text/javascript" src="/js/site.js"></script>
+    <script type="text/javascript" src="/js/controllers/HomeController.js"></script>
+    <script type="text/javascript">
       $(function () {
         var topH = $('.header').height(),
         bottomH = $('.bottom-chat').height(),
@@ -77,7 +80,7 @@
 
         $('.conversation').height(windowH - topH - bottomH - 50);
       });
-  </script>
+    </script>
     <!-- Your scripts here? -->
     <!-- Your scripts here? -->
     <!-- Your scripts here? -->

@@ -11,10 +11,10 @@
       <a class="navbar-brand" href="#" style="color: #B71F37; font-family: 'Courgette'; font-size: 22px;">Socialeasier</a>
     </div>
     <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav" style="font-size: 12px;">
-        <li><a href="#about">COMO FUNCIONA</a></li>
-        <li><a href="#contact">CONTATO</a></li>
-        <li><a href="#contact">SEJA UM PARCEIRO</a></li>
+      <ul class="nav navbar-nav header-menu" style="font-size: 12px;">
+        <li><a href="#/about">{{ 'lbHowWorks' | translate }}</a></li>
+        <li><a href="#/contact">{{ 'lbContact' | translate }}</a></li>
+        <li><a href="#/partner">{{ 'lbPartner' | translate }}</a></li>
         <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -31,45 +31,4 @@
     </div>
   </div>
 </div>
-<div class="container">
-    <div class="jumbotron" style="background: url('/images/socialeasier.png') -55px -188px;">
-        <h1 class="txt-shadow">Lorem Ipsum!</h1>
-        <p class="txt-shadow">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore perferendis, debitis id repellendus aliquid tempora incidunt dignissimos exercitationem expedita cum enim amet veniam quis, adipisci suscipit, voluptas minima. Saepe, quia.</p>
-        <p><a href="#" class="btn btn-primary btn-lg" role="button">Saiba mais »</a></p>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-danger">
-              <div class="panel-heading">
-                <h3 class="panel-title">Lorem ipsum dolor sit amet.</h3>
-              </div>
-              <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <a href="/chat" class="btn btn-primary">Entrar agora »</a>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-danger">
-              <div class="panel-heading">
-                <h3 class="panel-title">Lorem ipsum dolor sit amet.</h3>
-              </div>
-              <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <a href="/chat" class="btn btn-primary">Entrar agora »</a>
-              </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-           <div class="panel panel-danger">
-              <div class="panel-heading">
-                <h3 class="panel-title">Lorem ipsum dolor sit amet.</h3>
-              </div>
-              <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <a href="/chat" class="btn btn-primary">Entrar agora »</a>
-              </div>
-            </div>
-        </div>
-    </div>
-</div>
+<div ng-view=""></div>

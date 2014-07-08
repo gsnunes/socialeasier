@@ -9,7 +9,7 @@
 .conversation .info-block {display: block; padding-left: 60px;}
 .conversation .info-block h4 {color: #B71F37;}
 .conversation li {padding: 10px 0px; border-bottom: dotted 1px #CCCCCC;}
-
+.header-menu li {text-transform: uppercase;}
 .list-users li {padding: 5px 0; border-bottom: dotted 1px #CCCCCC;}
 
 a {color: #B71F37;}
