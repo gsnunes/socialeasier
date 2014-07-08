@@ -10,6 +10,11 @@
 .conversation .info-block h4 {color: #B71F37;}
 .conversation li {padding: 10px 0px; border-bottom: dotted 1px #CCCCCC;}
 
+.list-users li {padding: 5px 0; border-bottom: dotted 1px #CCCCCC;}
+
+a {color: #B71F37;}
+a:hover {color: #B71F37;}
+
 @media (min-width: 768px) {
 	.bottom-chat {left: 50%; margin-left: -375px; width: 750px;}
 }

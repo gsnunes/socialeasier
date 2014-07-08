@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- bower:css -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
     <!-- endbower -->
+    <link rel="stylesheet" href="/styles/main.css" />
     <!--
 
       Stylesheets
@@ -69,7 +69,15 @@
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
+    <script>
+      $(function () {
+        var topH = $('.header').height(),
+        bottomH = $('.bottom-chat').height(),
+        windowH = $(window).height();
 
+        $('.conversation').height(windowH - topH - bottomH - 50);
+      });
+  </script>
     <!-- Your scripts here? -->
     <!-- Your scripts here? -->
     <!-- Your scripts here? -->
