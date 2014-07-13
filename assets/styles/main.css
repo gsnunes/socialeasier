@@ -4,7 +4,7 @@
 .dropdown-menu > li > a {padding: 3px 10px;}
 .bottom-chat {position: absolute; bottom: 0px; padding-bottom: 10px; width: 100%; background-color: #FFFFFF;}
 
-.conversation {overflow-y: auto; height: 200px;}
+.conversation {overflow-y: auto; height: 200px; -webkit-overflow-scrolling: touch;}
 .conversation img {float: left;}
 .conversation .info-block {display: block; padding-left: 60px;}
 .conversation .info-block h4 {color: #B71F37;}
