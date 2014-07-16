@@ -6,7 +6,7 @@ window.app.config(function ($routeProvider) {
       })
       .when('/how-it-works', {
         templateUrl: '/templates/site/how-it-works/index.html',
-        controller: 'HowWorksCtrl'
+        controller: 'HowItWorksCtrl'
       })
       .when('/contact', {
         templateUrl: '/templates/site/contact/index.html',
