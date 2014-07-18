@@ -24,6 +24,17 @@ module.exports = {
   _config: {},
 
   index: function (req, res) {
+
+  	ChatService.rooms.list(function(result) {
+  		console.dir(result);
+  	});
+
+  	ChatService.room.get('room', function(result) {
+  		console.dir(result);
+  	});
+
+  	ChatService.room.create();
+
     res.view();
   }
   

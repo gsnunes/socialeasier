@@ -19,6 +19,7 @@
   "author": "",
   "license": "",
   "devDependencies": {
-    "grunt-wiredep": "^1.8.0"
+    "grunt-wiredep": "^1.8.0",
+    "xml2js": "^0.4.4"
   }
 }
