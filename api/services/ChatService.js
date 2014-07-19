@@ -15,6 +15,24 @@ user = {
 	host: host,
 	path: '/plugins/userService/userservice',
 	port: '9090'
+},
+
+setReq = function (options, callback) {
+	var req = http.request(options, function (res) {
+		var str = [];
+
+		res.on('data', function (chunk) {
+			str.push(chunk);
+		});
+
+		res.on('end', function () {
+			parseString(str.join(), function (err, data) {
+				callback(data);
+			});
+		});
+	});
+
+	req.end();
 }
 
 module.exports = {
@@ -54,6 +72,12 @@ module.exports = {
 
 		paticipants: function (room) {
 			console.log('paticipants');
+		},
+
+		addParticipant: function (participant, callback) {
+			var options = Object.create(user);
+			options.path += '?type=add&secret=socialeasier&username=' + participant.username + '&password=' + participant.pass + '&name=' + participant.name + '&email=' + participant.mail;
+			setReq(options, callback);
 		}
 	},
 

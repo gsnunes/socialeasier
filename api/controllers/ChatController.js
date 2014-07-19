@@ -30,12 +30,13 @@ module.exports = {
   	});
 
   	ChatService.room.get('room', function(result) {
-  		console.dir(result);
-  	});
+      res.view();
+    });
 
-  	ChatService.room.create();
+    ChatService.room.addParticipant({username: 'chevaplay', pass: 'p@ssword123', name: 'Rafael', email: 'rafaelchevarria@gmail.com'}, function (data) {
+      console.log('added participant', data);
+    });
 
-    res.view();
   }
   
 };
