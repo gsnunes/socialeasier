@@ -4,17 +4,19 @@ parseString = require('xml2js').parseString,
 
 host = 'socialeasier.com',
 
-muc = {
-	host: host,
-	path: '/plugins/mucservice/chatrooms',
-	port: '9090',
-	headers: {'Authorization': 'Basic YWRtaW46c29jaWFsZWFzaWVyMTIz'}
-},
+plugins = {
+	muc: {
+		host: host,
+		path: '/plugins/mucservice/chatrooms',
+		port: '9090',
+		headers: {'Authorization': 'Basic YWRtaW46c29jaWFsZWFzaWVyMTIz'}
+	},
 
-user = {
-	host: host,
-	path: '/plugins/userService/userservice',
-	port: '9090'
+	user: {
+		host: host,
+		path: '/plugins/userService/userservice',
+		port: '9090'
+	}
 },
 
 setReq = function (options, callback) {
@@ -38,7 +40,7 @@ setReq = function (options, callback) {
 module.exports = {
 	room: {
 		get: function (room, callback) {
-			var options = Object.create(muc);
+			var options = Object.create(plugins.muc);
 			options.path += '/' + room;
 
 			var req = http.request(options, function (res) {
@@ -74,16 +76,22 @@ module.exports = {
 			console.log('paticipants');
 		},
 
-		addParticipant: function (participant, callback) {
-			var options = Object.create(user);
-			options.path += '?type=add&secret=socialeasier&username=' + participant.username + '&password=' + participant.pass + '&name=' + participant.name + '&email=' + participant.mail;
+		addUser: function (user, callback) {
+			var options = Object.create(plugins.user);
+			options.path += '?type=add&secret=socialeasier&username=' + user.username + '&password=' + user.pass + '&name=' + user.name + '&email=' + user.mail;
+			setReq(options, callback);
+		},
+
+		removeUser: function (user, callback) {
+			var options = Object.create(plugins.user);
+			options.path += '?type=delete&secret=socialeasier&username=' + user.username;
 			setReq(options, callback);
 		}
 	},
 
 	rooms: {
 		list: function (callback) {
-			var req = http.request(muc, function (res) {
+			var req = http.request(plugins.muc, function (res) {
 				var str = [];
 
 				res.on('data', function (chunk) {

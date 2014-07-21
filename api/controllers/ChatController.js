@@ -24,19 +24,7 @@ module.exports = {
   _config: {},
 
   index: function (req, res) {
-
-  	ChatService.rooms.list(function(result) {
-  		console.dir(result);
-  	});
-
-  	ChatService.room.get('room', function(result) {
-      res.view();
-    });
-
-    ChatService.room.addParticipant({username: 'chevaplay', pass: 'p@ssword123', name: 'Rafael', email: 'rafaelchevarria@gmail.com'}, function (data) {
-      console.log('added participant', data);
-    });
-
+    res.redirect('/#/chat');
   }
   
 };

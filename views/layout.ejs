@@ -40,7 +40,7 @@
 
   </head>
 
-  <body style="padding-top: 70px; padding-bottom: 30px;" ng-app="siteApp">
+  <body style="padding-top: 70px; padding-bottom: 30px;" ng-app="socialApp">
 
     <!-- Include the view file for the current controller/route -->
     <%- body %>
@@ -70,22 +70,15 @@
     <script src="../bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
     <script src="../bower_components/angular-translate/angular-translate.js"></script>
-    <script type="text/javascript" src="/js/site.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
     <script type="text/javascript" src="/js/config/routes.js"></script>
     <script type="text/javascript" src="/js/config/i18n.js"></script>
     <script type="text/javascript" src="/js/controllers/HomeController.js"></script>
     <script type="text/javascript" src="/js/controllers/HowItWorksController.js"></script>
     <script type="text/javascript" src="/js/controllers/ContactController.js"></script>
+    <script type="text/javascript" src="/js/controllers/ChatController.js"></script>
     <script type="text/javascript" src="/js/directives/language.js"></script>
-    <script type="text/javascript">
-      $(function () {
-        var topH = $('.header').height(),
-        bottomH = $('.bottom-chat').height(),
-        windowH = $(window).height();
-
-        $('.conversation').height(windowH - topH - bottomH - 50);
-      });
-    </script>
+    <script type="text/javascript"></script>
     <!-- Your scripts here? -->
     <!-- Your scripts here? -->
     <!-- Your scripts here? -->

@@ -1,23 +1,25 @@
 <!-- Default home page -->
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #333333;">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#/" style="color: #B71F37; font-family: 'Courgette'; font-size: 22px;">Socialeasier</a>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav header-menu" style="font-size: 12px;">
-        <li><a href="#/how-it-works">{{ 'lbHowWorks' | translate }}</a></li>
-        <li><a href="#/contact">{{ 'lbContact' | translate }}</a></li>
-        <li><a href="#/partner">{{ 'lbPartner' | translate }}</a></li>
-      </ul>
-      <div language></div>
+<div>
+  <div class="header navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #333333;">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/" style="color: #B71F37; font-family: 'Courgette'; font-size: 22px;">Socialeasier</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav header-menu" style="font-size: 12px;">
+          <li><a href="#/how-it-works">{{ 'lbHowWorks' | translate }}</a></li>
+          <li><a href="#/contact">{{ 'lbContact' | translate }}</a></li>
+          <li><a href="#/partner">{{ 'lbPartner' | translate }}</a></li>
+        </ul>
+        <div language></div>
+      </div>
     </div>
   </div>
+  <div ng-view=""></div>
 </div>
-<div ng-view=""></div>

@@ -16,6 +16,10 @@ window.app.config(function ($routeProvider) {
         templateUrl: '/templates/site/be-a-partner/index.html',
         controller: 'BePartnerCtrl'
       })
+      .when('/chat', {
+        templateUrl: '/templates/chat/index.html',
+        controller: 'ChatCtrl'
+      })
       // .when('/:lang/how-it-works', {
       //   templateUrl: '/templates/site/how-it-works/index.html',
       //   controller: 'HowCtrl'
