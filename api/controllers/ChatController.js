@@ -14,6 +14,7 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
+var crypto = require('crypto');
 
 module.exports = {
     
@@ -25,6 +26,34 @@ module.exports = {
 
   index: function (req, res) {
     res.redirect('/#/chat');
+  },
+
+  join: function (req, res) {
+  	console.log(req.param('user'));
+  	if(!req.param('user')) {
+  		res.json({error: {login: true}});
+  		return;
+  	}
+
+  	var ip = req.connection.remoteAddress,
+  	cipher = crypto.createCipher('aes256', ip),
+  	room = cipher.update('socialeasier', 'utf8', 'hex') + cipher.final('hex');
+
+  	if(req.session.user) {
+  		res.json({room: req.session.room, user: req.session.user});
+  		return;
+  	}
+
+  	ChatService.room.get(room, function (data) {
+  		if(data.error) {
+  			ChatService.room.create(room, {}, function (data) {
+  				console.log(data);
+  			});
+  		}
+  	});
+
+  	res.json({});
+
   }
   
 };

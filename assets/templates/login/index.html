@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{'lbLogin' | translate}}</h3>
+</div>
+<div class="modal-body">
+    <form role="form">
+      <div class="form-group">
+        <label for="">{{'lbUsername' | translate}}:</label>
+        <input type="text" class="form-control" placeholder="John" ng-model="user.name">
+      </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">{{'lbOk' | translate}}</button>
+    <button class="btn btn-warning" ng-click="cancel()">{{'lbCancel' | translate}}</button>
+</div>

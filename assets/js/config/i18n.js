@@ -11,7 +11,11 @@ window.app.config(function ($translateProvider) {
       lbYourName: 'Your name',
       lbYourEmail: 'Your e-mail',
       lbMessage: 'Message',
-      lbSubmit: 'Submit'
+      lbSubmit: 'Submit',
+      lbLogin: 'You need be logged!',
+      lbUsername: 'Enter your name',
+      lbOk: 'Ok',
+      lbCancel: 'Cancel'
     });
 
     // Portuguese
@@ -26,7 +30,11 @@ window.app.config(function ($translateProvider) {
       lbYourName: 'Seu nome',
       lbYourEmail: 'Seu e-mail',
       lbMessage: 'Mensagem',
-      lbSubmit: 'Enviar'
+      lbSubmit: 'Enviar',
+      lbLogin: 'Você precisa estar logado!',
+      lbUsername: 'Insira seu nome',
+      lbOk: 'Ok',
+      lbCancel: 'Cancelar'
     });
 
     // Default Language
