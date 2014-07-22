@@ -1,6 +1,6 @@
 'use strict';
-window.app.controller('ChatCtrl', function ($rootScope, $scope, $routeParams, $location, $translate) {
-
+window.app.controller('ChatCtrl', function ($rootScope, $scope, socket) {
+	console.log(socket);
 	$scope.$on('$viewContentLoaded', function() {
 		var topH = $('.header').height(),
 		bottomH = $('.bottom-chat').height(),
@@ -9,4 +9,7 @@ window.app.controller('ChatCtrl', function ($rootScope, $scope, $routeParams, $l
 		$('.conversation').height(windowH - topH - bottomH - 50);
     });
 
-});
+    $scope.talks = [1, 2];
+    $scope.users = [1, 2];
+
+}); 

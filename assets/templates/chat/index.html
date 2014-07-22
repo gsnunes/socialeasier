@@ -2,46 +2,11 @@
     <div class="row">
       <div class="col-md-9 conversation">
         <ul class="list-unstyled">
-          <li>
+          <li ng-repeat="talk in talks">
             <img src="https://avatars2.githubusercontent.com/u/348214?s=460" alt="Fulano de Tal" width="50" class="img-circle" />
             <div class="info-block">
               <h4><a href="">Raphael Cavalcanti</a></h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-          </li>
-          <li>
-            <img src="https://avatars2.githubusercontent.com/u/1279829?s=460" alt="Fulano de Tal" width="50" class="img-circle" />
-            <div class="info-block">
-              <h4><a href="">Guilherme Nunes</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-            </div>
-          </li>
-          <li>
-            <img src="https://avatars0.githubusercontent.com/u/266958?s=460" alt="Fulano de Tal" width="50" class="img-circle" />
-            <div class="info-block">
-              <h4><a href="">Marília Baltar</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-            </div>
-          </li>
-          <li>
-            <img src="https://glip-prod.s3.amazonaws.com/web/customer_files/2042437644/modified.jpg?Expires=2035131196&AWSAccessKeyId=AKIAIAJQARUXBYOCUPVQ&Signature=4FHonZGwDjGE19ux%2FlScBNstGiw%3D" alt="Fulano de Tal" width="50" class="img-circle" />
-            <div class="info-block">
-              <h4><a href="">Rafael Chevarria</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-            </div>
-          </li>
-          <li>
-            <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/t1.0-1/c13.13.159.159/283201_4942876934768_1881285862_n.jpg" alt="Fulano de Tal" width="50" class="img-circle" />
-            <div class="info-block">
-              <h4><a href="">Jean Marques</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-            </div>
-          </li>
-          <li>
-            <img src="https://glip-prod.s3.amazonaws.com/web/customer_files/2042863628/modified.jpg?Expires=2035132399&AWSAccessKeyId=AKIAIAJQARUXBYOCUPVQ&Signature=iUIJ9JZxyI627WL3FQqZyzTwXHo%3D" alt="Fulano de Tal" width="50" class="img-circle" />
-            <div class="info-block">
-              <h4><a href="">Luciano Luz</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
             </div>
           </li>
         </ul>
@@ -53,12 +18,7 @@
           </div>
           <div class="panel-body">
             <ul class="list-unstyled list-users">
-              <li><a href=""><img src="https://avatars2.githubusercontent.com/u/348214?s=460" alt="" width="20" class="img-circle" /> Raphael Cavalcanti</a></li>
-              <li><a href=""><img src="https://avatars2.githubusercontent.com/u/1279829?s=460" alt="" width="20" class="img-circle"/> Guilherme Nunes</a></li>
-              <li><a href=""><img src="https://avatars0.githubusercontent.com/u/266958?s=460" alt="" width="20" class="img-circle"/> Marília Baltar</a></li>
-              <li><a href=""><img src="https://glip-prod.s3.amazonaws.com/web/customer_files/2042437644/modified.jpg?Expires=2035131196&AWSAccessKeyId=AKIAIAJQARUXBYOCUPVQ&Signature=4FHonZGwDjGE19ux%2FlScBNstGiw%3D" alt="" width="20" class="img-circle"/> Rafael Chevarria</a></li>
-              <li><a href=""><img src="https://glip-prod.s3.amazonaws.com/web/customer_files/2042863628/modified.jpg?Expires=2035132399&AWSAccessKeyId=AKIAIAJQARUXBYOCUPVQ&Signature=iUIJ9JZxyI627WL3FQqZyzTwXHo%3D" alt="" width="20" class="img-circle"/> Luciano Luz</a></li>
-              <li><a href=""><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/t1.0-1/c13.13.159.159/283201_4942876934768_1881285862_n.jpg" alt="" width="20" class="img-circle"/> Jean Marques</a></li>
+              <li ng-repeat="user in users"><a href=""><img src="https://avatars2.githubusercontent.com/u/348214?s=460" alt="" width="20" class="img-circle" /> Raphael Cavalcanti</a></li>
             </ul>
           </div>
         </div>
