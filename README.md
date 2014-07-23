@@ -1,6 +1,7 @@
 # Socialeasier
 ### O Chat pra quebrar o gelo!
 
+
 ### Instalação
 
 ```sh
