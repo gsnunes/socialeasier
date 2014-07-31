@@ -61,14 +61,17 @@ module.exports = {
 		},
 
 		create: function (room, values, callback) {
-			var options = Object.create(plugins.muc);
+			var options = new Object(plugins.muc);
 			options.method = 'POST';
 			options.headers['Content-Type'] = 'application/xml';
+
+			console.log('options', options);
 
 			var req = http.request(options, function (res) {
 				var str = [];
 
 				res.on('data', function (chunk) {
+					console.log(chunk);
 					str.push(chunk);
 				});
 
@@ -78,7 +81,9 @@ module.exports = {
 					});
 				});
 			});
-			req.write('<chatRoom><broadcastPresenceRoles><broadcastPresenceRole>moderator</broadcastPresenceRole><broadcastPresenceRole>participant</broadcastPresenceRole><broadcastPresenceRole>visitor</broadcastPresenceRole></broadcastPresenceRoles><canAnyoneDiscoverJID>true</canAnyoneDiscoverJID><canChangeNickname>false</canChangeNickname><canOccupantsChangeSubject>false</canOccupantsChangeSubject><canOccupantsInvite>false</canOccupantsInvite><creationDate>2014-02-12T15:52:37.592+01:00</creationDate><description>Chat Room</description><logEnabled>true</logEnabled><loginRestrictedToNickname>false</loginRestrictedToNickname><maxUsers>0</maxUsers><membersOnly>false</membersOnly><moderated>false</moderated><naturalName>Room</naturalName><owners><owners><password></password><persistent>true</persistent><publicRoom>true</publicRoom><registrationEnabled>false</registrationEnabled><roomName>' + room + '</roomName></chatRoom>');
+			var payload =  '<chatRoom> <admins/> <broadcastPresenceRoles> <broadcastPresenceRole>moderator</broadcastPresenceRole> <broadcastPresenceRole>participant</broadcastPresenceRole> <broadcastPresenceRole>visitor</broadcastPresenceRole> </broadcastPresenceRoles> <canAnyoneDiscoverJID>true</canAnyoneDiscoverJID> <canChangeNickname>true</canChangeNickname> <canOccupantsChangeSubject>false</canOccupantsChangeSubject> <canOccupantsInvite>false</canOccupantsInvite> <creationDate>2014-07-16T16:54:22.350Z</creationDate> <description>test</description> <logEnabled>true</logEnabled> <loginRestrictedToNickname>false</loginRestrictedToNickname> <maxUsers>30</maxUsers> <members> <member>test2@socialeasier.com</member> <member>test1@socialeasier.com</member> </members> <membersOnly>false</membersOnly> <moderated>false</moderated> <modificationDate>2014-07-16T16:54:22.372Z</modificationDate> <naturalName>' + room + '</naturalName> <outcasts/> <owners> <owner>admin@socialeasier.com</owner> </owners> <persistent>true</persistent> <publicRoom>true</publicRoom> <registrationEnabled>true</registrationEnabled> <roomName>'+ room +'</roomName> </chatRoom>';
+
+			req.write(payload);
 			req.end();
 
 		},
@@ -110,6 +115,7 @@ module.exports = {
 
 	rooms: {
 		list: function (callback) {
+			console.log(plugins.muc);
 			var req = http.request(plugins.muc, function (res) {
 				var str = [];
 

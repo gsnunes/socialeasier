@@ -25,11 +25,17 @@ module.exports = {
   _config: {},
 
   index: function (req, res) {
-    res.redirect('/#/chat');
+    // res.redirect('/#/chat');
+    // ChatService.room.create('room2', {}, function (data) {
+    //   console.log('Created', data);
+      ChatService.rooms.list(function (list) {
+        console.log(list);
+        res.json({list: list});
+      });
+    // });
   },
 
   join: function (req, res) {
-  	console.log(req.param('user'));
   	if(!req.param('user')) {
   		res.json({error: {login: true}});
   		return;
@@ -38,16 +44,19 @@ module.exports = {
   	var ip = req.connection.remoteAddress,
   	cipher = crypto.createCipher('aes256', ip),
   	room = cipher.update('socialeasier', 'utf8', 'hex') + cipher.final('hex');
-
+    
   	if(req.session.user) {
   		res.json({room: req.session.room, user: req.session.user});
   		return;
   	}
 
   	ChatService.room.get(room, function (data) {
+      console.log('get', data);
   		if(data.error) {
-  			ChatService.room.create(room, {}, function (data) {
-  				console.log(data);
+  			ChatService.room.create(room, {}, function () {
+          ChatService.rooms.list(function (list) {
+            res.json(list);
+          });
   			});
   		}
   	});

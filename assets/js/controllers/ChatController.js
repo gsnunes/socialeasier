@@ -32,12 +32,16 @@ window.app.controller('ChatCtrl', function ($rootScope, $scope, $modal, $http, s
 	    	if(data.error && data.error.login) {
 	    		loginModal();
 	    	} else {
-	    		$.cookie('user', user);
+	    		$.cookie('user', user.name);
 	    	}
 	    });
     }
 
-    send($.cookie('user'));
+    if($.cookie('user')) {
+    	send({user: {name: $.cookie('user')}});
+    } else {
+    	loginModal();
+    }
 
     // socket.on('connect', function () {
     // 	socket.emit('/chat', function (data) {
