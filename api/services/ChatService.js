@@ -1,6 +1,6 @@
 var http = require('http'),
 
-parseString = require('xml2js').parseString,
+xml2js = require('xml2js'),
 
 host = 'socialeasier.com',
 
@@ -28,7 +28,7 @@ setReq = function (options, callback) {
 		});
 
 		res.on('end', function () {
-			parseString(str.join(), function (err, data) {
+			xml2js.parseString(str.join(), function (err, data) {
 				callback(data);
 			});
 		});
@@ -51,7 +51,7 @@ module.exports = {
 				});
 
 				res.on('end', function () {
-					parseString(str.join(), function (err, data) {
+					xml2js.parseString(str.join(''), function (err, data) {
 						callback(data);
 					});
 				});
@@ -76,14 +76,56 @@ module.exports = {
 				});
 
 				res.on('end', function () {
-					parseString(str.join(), function (err, data) {
+					xml2js.parseString(str.join(''), function (err, data) {
 						callback(data);
 					});
 				});
 			});
-			var payload =  '<chatRoom> <admins/> <broadcastPresenceRoles> <broadcastPresenceRole>moderator</broadcastPresenceRole> <broadcastPresenceRole>participant</broadcastPresenceRole> <broadcastPresenceRole>visitor</broadcastPresenceRole> </broadcastPresenceRoles> <canAnyoneDiscoverJID>true</canAnyoneDiscoverJID> <canChangeNickname>true</canChangeNickname> <canOccupantsChangeSubject>false</canOccupantsChangeSubject> <canOccupantsInvite>false</canOccupantsInvite> <creationDate>2014-07-16T16:54:22.350Z</creationDate> <description>test</description> <logEnabled>true</logEnabled> <loginRestrictedToNickname>false</loginRestrictedToNickname> <maxUsers>30</maxUsers> <members> <member>test2@socialeasier.com</member> <member>test1@socialeasier.com</member> </members> <membersOnly>false</membersOnly> <moderated>false</moderated> <modificationDate>2014-07-16T16:54:22.372Z</modificationDate> <naturalName>' + room + '</naturalName> <outcasts/> <owners> <owner>admin@socialeasier.com</owner> </owners> <persistent>true</persistent> <publicRoom>true</publicRoom> <registrationEnabled>true</registrationEnabled> <roomName>'+ room +'</roomName> </chatRoom>';
 
-			req.write(payload);
+			var date = new Date();
+
+			var payload = {
+				"chatRoom": {
+					"admins": {
+						"admin": room.admins
+					},
+					"broadcastPresenceRoles": {
+					  "broadcastPresenceRole": [
+					    "moderator",
+					    "participant",
+					    "visitor"
+					  ]
+					},
+					"canAnyoneDiscoverJID": "true",
+					"canChangeNickname": "true",
+					"canOccupantsChangeSubject": "false",
+					"canOccupantsInvite": "false",
+					"creationDate": "2014-07-16T16:54:22.372Z",
+					"description": room.description,
+					"logEnabled": "true",
+					"loginRestrictedToNickname": "false",
+					"maxUsers": 50,
+					"members": {
+					  "member": room.users
+					},
+					"membersOnly": "false",
+					"moderated": "false",
+					"modificationDate": "2014-07-16T16:54:22.372Z",
+					"naturalName": room.id,
+					"owners": { "owner": "admin@socialeasier.com" },
+					"persistent": "true",
+					"publicRoom": "true",
+					"registrationEnabled": "true",
+					"roomName": room.id
+				}
+			};
+
+			var builder = new xml2js.Builder(),
+			xml = builder.buildObject(payload);
+
+			console.log(xml);
+
+			req.write(xml);
 			req.end();
 
 		},
@@ -100,7 +142,7 @@ module.exports = {
 			console.log('paticipants');
 		},
 
-		addUser: function (user, callback) {
+		createUser: function (user, callback) {
 			var options = Object.create(plugins.user);
 			options.path += '?type=add&secret=socialeasier&username=' + user.username + '&password=' + user.pass + '&name=' + user.name + '&email=' + user.mail;
 			setReq(options, callback);
@@ -115,16 +157,20 @@ module.exports = {
 
 	rooms: {
 		list: function (callback) {
-			console.log(plugins.muc);
-			var req = http.request(plugins.muc, function (res) {
+			var options = new Object(plugins.muc);
+			options.method = 'GET';
+
+			var req = http.request(options, function (res) {
 				var str = [];
 
 				res.on('data', function (chunk) {
 					str.push(chunk);
 				});
 
-				res.on('end', function () {
-					parseString(str.join(), function (err, data) {
+				res.on('end', function (err, a) {
+					console.log(err, a);
+					xml2js.parseString(str.join(''), function (err, data) {
+						console.log(data, str);
 						callback(data);
 					});
 				});

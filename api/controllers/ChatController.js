@@ -14,6 +14,7 @@
  *
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
+
 var crypto = require('crypto');
 
 module.exports = {
@@ -29,7 +30,6 @@ module.exports = {
     // ChatService.room.create('room2', {}, function (data) {
     //   console.log('Created', data);
       ChatService.rooms.list(function (list) {
-        console.log(list);
         res.json({list: list});
       });
     // });
@@ -43,22 +43,23 @@ module.exports = {
 
   	var ip = req.connection.remoteAddress,
   	cipher = crypto.createCipher('aes256', ip),
-  	room = cipher.update('socialeasier', 'utf8', 'hex') + cipher.final('hex');
-    
-  	if(req.session.user) {
-  		res.json({room: req.session.room, user: req.session.user});
-  		return;
-  	}
+  	room = {users: ["test2@socialeasier.com"], admins: [], description: 'Room created on ip: ' + ip,  id: cipher.update('socialeasier', 'utf8', 'hex') + cipher.final('hex')};
 
-  	ChatService.room.get(room, function (data) {
-      console.log('get', data);
-  		if(data.error) {
+  	ChatService.room.get('test', function (data) {
+      console.log(data);
+  		// if(data.error) {
   			ChatService.room.create(room, {}, function () {
-          ChatService.rooms.list(function (list) {
-            res.json(list);
-          });
+    //       req.session.room = room;
+
+    //       // if(req.session.user) {
+    //         res.json({room: room, user: req.session.user});
+    //       // } else {
+    //         // ChatService.room.createUser();
+    //       // }
   			});
-  		}
+  		// } else {
+
+    //   }
   	});
 
   	res.json({});
