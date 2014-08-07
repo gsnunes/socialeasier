@@ -17,7 +17,7 @@
 
 var crypto = require('crypto');
 
-module.exports = {
+var chatController = module.exports = {
     
   /**
    * Overrides for the settings in `config/controllers.js`
@@ -26,13 +26,7 @@ module.exports = {
   _config: {},
 
   index: function (req, res) {
-    // res.redirect('/#/chat');
-    // ChatService.room.create('room2', {}, function (data) {
-    //   console.log('Created', data);
-      ChatService.rooms.list(function (list) {
-        res.json({list: list});
-      });
-    // });
+
   },
 
   join: function (req, res) {
@@ -41,29 +35,25 @@ module.exports = {
   		return;
   	}
 
+    req.session.user = req.param('user');
+
   	var ip = req.connection.remoteAddress,
   	cipher = crypto.createCipher('aes256', ip),
-  	room = {users: ["test2@socialeasier.com"], admins: [], description: 'Room created on ip: ' + ip,  id: cipher.update('socialeasier', 'utf8', 'hex') + cipher.final('hex')};
+  	room = {id: cipher.update('socialeasier', 'utf8', 'hex') + cipher.final('hex')};
 
-  	ChatService.room.get('test', function (data) {
-      console.log(data);
-  		// if(data.error) {
-  			ChatService.room.create(room, {}, function () {
-    //       req.session.room = room;
+  	// ChatService.room.get(room, function (data) {
+   //    if(data.error) {
+        ChatService.room.create(room, function(data) {
+          chatController.createdRoom(data, res);
+        });
+      // } else {
+      //   chatController.createdRoom(data, res);
+      // }
+  	// });
+  },
 
-    //       // if(req.session.user) {
-    //         res.json({room: room, user: req.session.user});
-    //       // } else {
-    //         // ChatService.room.createUser();
-    //       // }
-  			});
-  		// } else {
-
-    //   }
-  	});
-
-  	res.json({});
-
+  createdRoom: function (data, res) {
+    res.json(data);
   }
   
 };
