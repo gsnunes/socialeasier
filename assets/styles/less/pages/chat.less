@@ -1,11 +1,89 @@
 html, body {background-color: #FFFFFF; padding: 0px; margin: 0px; font-size: 14px; font-family: 'Trebuchet MS'; height: 100%}
 body.side-bar-opened {
-	.content {margin-left: 262px;}
 	overflow-x: hidden;
+	.content {
+		animation: open 0.25s ease forwards;
+  		-webkit-animation: open 0.25s ease forwards;
+	}
 }
 
 h1 {cursor: pointer;}
 
-nav.side-bar {display: block; position: absolute; color: #FFFFFF; width: 240px; height: 100%; background: #2D2D2D; position: fixed; top: 0px; left: 0px; border-right: solid 2px #D20C3E; padding: 0 10px;}
-.content {min-height: 100%; -moz-transition: all 0.25s ease; transition: all 0.25s ease; position: relative; display: block; background-color: #FFFFFF;}
+.side-bar {display: block; position: absolute; color: #FFFFFF; width: 240px; height: 100%; background: #2D2D2D; position: fixed; top: 0px; left: 0px; border-right: solid 2px #D20C3E; padding: 0 10px;}
+.content {min-height: 100%; position: relative; display: block; background-color: #FFFFFF;}
 .inner-content {padding: 20px;}
+
+.form-group { margin-top: 10px;}
+
+.messages {width: 90%; margin: 0 auto; color: #5A5A5A;}
+.messages li { 
+	margin-top: 10px;
+	background-color: #F9F9F9;
+	padding: 5px 10px;
+	box-shadow: 1px 1px 2px #CCCCCC;
+	border-radius: 2px;
+	min-height: 40px;
+	position: relative;
+}
+
+.messages li.me {
+	background-color: #E2F4E2;
+
+	p {
+		padding-left: 0px;
+		padding-right: 50px;
+	}
+
+	img {
+		right: 10px;
+	}
+
+	.info {
+		left: 10px;
+	}
+}
+
+.messages li img {
+	position: absolute;
+	border-radius: 50%;
+	width: 40px;
+	box-shadow: 1px 1px 2px #CCCCCC;
+}
+
+.messages li p {
+	padding-left: 50px;
+	padding-bottom: 15px;
+}
+
+.messages li .info {
+	font-size: 0.8em;
+	position: absolute;
+	bottom: 5px;
+	right: 10px;
+	color: #CCCCCC;
+}
+
+input {
+	display: block;
+	padding: 15px 10px;
+	box-sizing: border-box;
+	width: 100%;
+	border-radius: 25px;
+	border: solid 1px #444444;
+	color: #FFFFFF;
+	background-color: transparent;
+	font-size: 1em
+}
+
+@name: open;
+@keyframes @name {
+  100% {
+     transform: translate(262px);
+  }
+}
+
+@-webkit-keyframes @name {
+  100% {
+     transform: translate(262px);
+  }
+}

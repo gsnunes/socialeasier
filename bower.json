@@ -1,0 +1,20 @@
+{
+  "name": "socialeasier",
+  "version": "0.0.1",
+  "authors": [
+    "Raphael <raphasilvac@gmail.com>"
+  ],
+  "description": "The simple social",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "assets/vendor",
+    "app/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}
