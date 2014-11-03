@@ -10,8 +10,8 @@ body.side-bar-opened {
 h1 {cursor: pointer;}
 
 .side-bar {display: block; position: absolute; color: #FFFFFF; width: 240px; height: 100%; background: #2D2D2D; position: fixed; top: 0px; left: 0px; border-right: solid 2px #D20C3E; padding: 0 10px;}
-.content {min-height: 100%; position: relative; display: block; background-color: #FFFFFF;}
-.inner-content {padding: 20px;}
+.content {min-height: 100%; position: relative; display: block; background-color: #FFFFFF; }
+.inner-content {padding: 20px 20px 80px;}
 
 .form-group { margin-top: 10px;}
 
@@ -73,6 +73,34 @@ input {
 	color: #FFFFFF;
 	background-color: transparent;
 	font-size: 1em
+}
+
+footer {
+	display: block;
+	position: fixed;
+	bottom: 0px;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	background-color: #FFFFFF;
+}
+
+footer fieldset {
+	display: block;
+	position: relative;
+}
+
+footer input {
+	padding-right:  110px;
+	color: #000000;
+}
+
+footer button.btn {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 100px;
+	height: 48px;
 }
 
 @name: open;
