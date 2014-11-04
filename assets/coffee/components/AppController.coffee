@@ -1,2 +1,3 @@
 class AppController
 	constructor: () ->
+	onDetach: () ->

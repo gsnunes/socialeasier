@@ -1,6 +1,5 @@
 class ChatController extends AppController
 	constructor: ->
-		super
 		@bindEvents()
 
 	bindEvents: ->
@@ -11,4 +10,7 @@ class ChatController extends AppController
 	toggleSideBar: ->
 		$('body').toggleClass('side-bar-opened')
 
-app = new ChatController
+	login: ->
+		$('body').add('side-bar-opened')
+
+window.app.controller = ChatController
