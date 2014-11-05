@@ -11,6 +11,7 @@ class ChatController extends AppController
 		$('body').toggleClass('side-bar-opened')
 
 	login: ->
-		$('body').add('side-bar-opened')
+		console.log('login')
+		$('body').addClass('side-bar-opened')
 
-window.app.controller = ChatController
+window.app.controllers.ChatController = ChatController

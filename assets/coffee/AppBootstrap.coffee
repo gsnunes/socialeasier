@@ -1,15 +1,20 @@
-window.app = {}
+window.app = {
+	controllers: {}
+}
 
 class Bootstrap
 
 	constructor: ->
 		@router = new Router()
 		@bindEvents()
-		@setRoutes()
+
 		@controller = {
 			name: null
 			instance: null
 		};
+
+		@setRoutes()
+		@router.run()
 
 	bindEvents: ->
 		_this = @
@@ -23,7 +28,7 @@ class Bootstrap
 
 	getAction: (options) ->
 		_this = @
-		@controller.instance = if @controller.name == params.controller then @controller.instance else new window.app.controller[params.controller]()
+		@controller.instance = if @controller.name == options.controller then @controller.instance else new window.app.controllers[options.controller]()
 
 		callback = (params) ->
 			if options.method
@@ -31,13 +36,14 @@ class Bootstrap
 				_this.controller.instance[options.method](params)
 
 	setRoutes: ->
+		console.log('setRoutes')
 		routes = @getRoutes()
-
+		console.log(routes);
 		for key, value of routes
 			action =->
 
 			if value instanceof Object
-				action = getAction(value)
+				action = @getAction(value)
 			else if value instanceof Function
 				action = value
 
@@ -47,7 +53,8 @@ class Bootstrap
 		return
 
 	setRoute: (route, callback) ->
-		@router.add(route, value)
+		console.log(route, callback)
+		@router.add(route, callback)
 
 	getRoutes: ->
 		window.app.routes
