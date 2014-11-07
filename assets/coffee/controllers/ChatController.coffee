@@ -3,6 +3,7 @@ class ChatController extends AppController
 		@bindEvents()
 
 	bindEvents: ->
+		console.log('bindEvents');
 		that = @
 		$('h1').click ->
 			that.toggleSideBar()

@@ -28,17 +28,16 @@ class Bootstrap
 
 	getAction: (options) ->
 		_this = @
-		@controller.instance = if @controller.name == options.controller then @controller.instance else new window.app.controllers[options.controller]()
 
 		callback = (params) ->
+			_this.controller.instance = if _this.controller.name == options.controller then _this.controller.instance else new window.app.controllers[options.controller]()
+			console.log(_this.controller.name, options.controller)
+			_this.controller.name = options.controller
 			if options.method
-				_this.controller.name = options.method
 				_this.controller.instance[options.method](params)
 
 	setRoutes: ->
-		console.log('setRoutes')
 		routes = @getRoutes()
-		console.log(routes);
 		for key, value of routes
 			action =->
 
@@ -53,7 +52,6 @@ class Bootstrap
 		return
 
 	setRoute: (route, callback) ->
-		console.log(route, callback)
 		@router.add(route, callback)
 
 	getRoutes: ->
