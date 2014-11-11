@@ -1,10 +1,15 @@
 class ChatController extends AppController
 	constructor: ->
+		@init()
+
+	init: ->
 		$('body').removeClass 'side-bar-opened'
 		tpl = new HbsWidget '#user-options-tpl', {}
 		$('.side-bar').html tpl.getElement()
 		@user = @getUserInfo()
+		@unbindEvents()
 		@bindEvents()
+		@hideLoader()
 
 		if @user
 			@startChat()
@@ -12,7 +17,8 @@ class ChatController extends AppController
 			window.location.hash = '/login'
 
 	startChat: ->
-		console.log 'startChat'
+		tpl = new HbsWidget '#messages-tpl', {}
+		$('.chat-content').html tpl.getElement()
 
 	getUserInfo: ->
 		return $.cookie 'socialeasier_username'
@@ -21,10 +27,12 @@ class ChatController extends AppController
 		@user = username
 		$.cookie 'socialeasier_username', username
 
+	unbindEvents: ->
+		$(document).off()
 
 	bindEvents: ->
 		that = @
-		$('h1').click ->
+		$(document).on 'click', 'h1', ->
 			that.toggleSideBar()
 
 		$(document).on 'click', '#btn-login', ->
@@ -35,10 +43,23 @@ class ChatController extends AppController
 	toggleSideBar: ->
 		$('body').toggleClass('side-bar-opened')
 
+	logout: ->
+		$.removeCookie 'socialeasier_username'
+		window.location.hash = ''
+
+
 	login: ->
 		tpl = new HbsWidget '#login-tpl', {}
+		content = new HbsWidget '#info-room-tpl', {}
 		$('.side-bar').html tpl.getElement()
+		$('.chat-content').html content.getElement()
 		$('body').addClass('side-bar-opened')
 		return
+
+	showLoader: ->
+		$('#loader').show()
+
+	hideLoader: ->
+		$('#loader').hide()
 
 window.app.controllers.ChatController = ChatController

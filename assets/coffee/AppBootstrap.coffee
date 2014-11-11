@@ -30,12 +30,13 @@ class Bootstrap
 		_this = @
 
 		callback = (params) ->
-			console.log options
-			_this.controller.instance = if _this.controller.method && _this.controller.method == options.method then _this.controller.instance else new window.app.controllers[options.controller]()
+			_this.controller.instance = if _this.controller.name == options.controller then _this.controller.instance else new window.app.controllers[options.controller]()
 			_this.controller.name = options.controller
 			if options.method
-				_this.controller.method == options.method
 				_this.controller.instance[options.method](params)
+			else
+				_this.controller.instance.init()
+
 
 	setRoutes: ->
 		routes = @getRoutes()

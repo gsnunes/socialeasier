@@ -20,7 +20,15 @@
 
     <!-- USER OPTIONS TPL -->
     <script id="user-options-tpl" type="text/x-handlebars-template">
-        <a href="#" class="btn btn-default form-group">Sign out</a> 
+        <ul>
+            <li>
+                <a href="#/config">Configurations</a>
+            </li>
+            <li>
+                <a href="#/private-rooms">Private rooms</a>
+            </li>
+        </ul>
+        <a href="#/logout" id="" class="btn btn-default form-group">Sign out</a> 
     </script>
     <!-- USER OPTIONS TPL END -->
 
@@ -41,9 +49,16 @@
     </script>
     <!-- MESSAGES TPL END -->
 
+    <!-- INFO ROOM TPL -->
+    <script id="info-room-tpl" type="text/x-handlebars-template">
+        <div class="info-room">
+            <p>In the moment there is no users logged in.</p>
+            <p>Be the first!</p>
+        </div>
+    </script>
+    <!-- INFO ROOM TPL END -->
     <!-- HANDLEBARS TEMPLATES END -->
   </head>
-
   <body class="">
     <%- body %>
     <script src="/vendor/jquery/dist/jquery.min.js"></script>

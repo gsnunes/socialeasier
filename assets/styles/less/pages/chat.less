@@ -6,6 +6,31 @@ body.side-bar-opened {
 	}
 }
 
+#loader {
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	border: solid 2px #CCCCCC;
+	border-top: solid 2px #D20C3E;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -10px;
+	margin-top: -10px;
+	-webkit-animation: rotation 0.5s infinite linear;
+	-moz-animation: rotation 0.5s infinite linear;
+	animation: rotation 0.5s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
+
 h1 {cursor: pointer;}
 
 .side-bar {display: block; position: absolute; color: #FFFFFF; width: 240px; height: 100%; background: #2D2D2D; position: fixed; top: 0px; left: 0px; border-right: solid 2px #D20C3E; padding: 0 10px;}
