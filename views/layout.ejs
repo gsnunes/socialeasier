@@ -9,17 +9,53 @@
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
+    <!-- HANDLEBARS TEMPLATES -->
+
+    <!-- LOGIN TPL -->
+    <script id="login-tpl" type="text/x-handlebars-template">
+        <input class="form-group" type="text" name="username" placeholder="Enter with a name">
+        <a href="#" id="btn-login" class="btn btn-default form-group">Sign in</a> 
+    </script>
+    <!-- LOGIN TPL END -->
+
+    <!-- USER OPTIONS TPL -->
+    <script id="user-options-tpl" type="text/x-handlebars-template">
+        <a href="#" class="btn btn-default form-group">Sign out</a> 
+    </script>
+    <!-- USER OPTIONS TPL END -->
+
+    <!-- MESSAGES TPL -->
+    <script id="messages-tpl" type="text/x-handlebars-template">
+        <ul class="messages">
+            <li>
+                <img src="http://www.austadpro.com/blog/wp-content/uploads/2011/07/anonymous-user-gravatar.png" alt="">
+                <p class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto obcaecati maiores nulla amet accusamus, at pariatur porro nostrum fuga voluptatem, aperiam veniam deleniti doloribus animi recusandae tempora quia vero explicabo!</p>
+                <span class="info">Raphael - 10:00</span>
+            </li>
+            <li class="me">
+                <img src="http://www.austadpro.com/blog/wp-content/uploads/2011/07/anonymous-user-gravatar.png" alt="">
+                <p class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto obcaecati maiores nulla amet accusamus, at pariatur porro nostrum fuga voluptatem, aperiam veniam deleniti doloribus animi recusandae tempora quia vero explicabo!</p>
+                <span class="info">Raphael - 10:00</span>
+            </li>
+        </ul>
+    </script>
+    <!-- MESSAGES TPL END -->
+
+    <!-- HANDLEBARS TEMPLATES END -->
   </head>
 
   <body class="">
     <%- body %>
     <script src="/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/vendor/jquery-cookie/jquery.cookie.js"></script>
+    <script src="/vendor/handlebars/handlebars.min.js"></script>
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
     <script src="/js/AppBootstrap.js"></script>
     <script src="/js/components/AppController.js"></script>
     <script src="/js/components/AppModel.js"></script>
     <script src="/js/components/AppRouter.js"></script>
+    <script src="/js/components/HbsWidget.js"></script>
     <script src="/js/config/routes.js"></script>
     <script src="/js/controllers/ChatController.js"></script>
     <!--SCRIPTS END-->

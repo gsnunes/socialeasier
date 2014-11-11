@@ -23,15 +23,12 @@ class Router
 
 	getDefaultRoute: ->
 		for route in @routes
-			console.log(route, (route.regex.toString() == '/default/'))
 			if route.regex.toString() == '/default/'
 				return route
 
 	run: (path = window.location.href) ->
 		for route in @routes
 			results = path.match(route.regex)
-
-			console.log(results);
 
 			if results?
 				index = 1
