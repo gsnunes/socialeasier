@@ -6,6 +6,12 @@ body.side-bar-opened {
 	}
 }
 
+body.login {
+	footer {
+		display: none;
+	}
+}
+
 #loader {
 	width: 20px;
 	height: 20px;
@@ -34,6 +40,30 @@ body.side-bar-opened {
 h1 {cursor: pointer;}
 
 .side-bar {display: block; position: absolute; color: #FFFFFF; width: 240px; height: 100%; background: #2D2D2D; position: fixed; top: 0px; left: 0px; border-right: solid 2px #D20C3E; padding: 0 10px;}
+.side-bar ul {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.side-bar ul li a {
+	color: #CCCCCC;
+	display: block;
+	padding: 6px;
+	border-radius: 2px;
+}
+
+.side-bar ul li a i {
+	width: 15px;
+	text-align: center;
+}
+
+.side-bar ul li a:hover {
+	color: #FFFFFF;
+	background-color: #d20c3e;
+	i {
+		font-size: 1.2em;
+	}
+}
+
 .content {
 	min-height: 100%;
 	position: relative;

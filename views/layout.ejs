@@ -6,6 +6,7 @@
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
@@ -13,8 +14,10 @@
 
     <!-- LOGIN TPL -->
     <script id="login-tpl" type="text/x-handlebars-template">
-        <input class="form-group" type="text" name="username" placeholder="Enter with a name">
-        <a href="#" id="btn-login" class="btn btn-default form-group">Sign in</a> 
+        <form id="form-login">
+            <input class="form-group" type="text" name="username" placeholder="Enter with a name">
+            <a href="#" id="btn-login" class="btn btn-default form-group">Sign in</a>
+        </form>
     </script>
     <!-- LOGIN TPL END -->
 
@@ -22,10 +25,10 @@
     <script id="user-options-tpl" type="text/x-handlebars-template">
         <ul>
             <li>
-                <a href="#/config">Configurations</a>
+                <a href="#/config"><i class="fa fa-cog"></i> Configurations</a>
             </li>
             <li>
-                <a href="#/private-rooms">Private rooms</a>
+                <a href="#/private-rooms"><i class="fa fa-lock"></i> Private rooms</a>
             </li>
         </ul>
         <a href="#/logout" id="" class="btn btn-default form-group">Sign out</a> 
